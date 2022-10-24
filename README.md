@@ -3,7 +3,7 @@
 ## Background
 This course project is designed to help you practice using your skills.  
 Each week, you will learn important concepts.  Then, you will apply these concepts 
-to build an amazing course project over the next seven weeks. What�s more, this project 
+to build an amazing course project over the next seven weeks. This project 
 will have a Graphical User Interface (GUI) instead of using the console. This course 
 project has two parts. For the first couple of weeks, you will create a basic GUI and 
 learn how to work with GUI controls while practicing basic programming concepts. 
