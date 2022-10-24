@@ -11,7 +11,7 @@ After that, you will create an object-oriented project.
 
 ## Part 1: Scenario
 Lucky you!  Your manager has put you in charge of the lyric videos for the monthly lip synch contest. 
-Each contestant �sings� along with a song of their choice, prompted by the lyrics in the video.  
+Each contestant "sings" along with a song of their choice, prompted by the lyrics in the video.  
 Essentially, there is a long list of songs, along with associated URLs and other information. 
 Your manager has some basic functionality in mind, such as the ability to add and remove songs, as 
 well as create playlists and show the videos.  
