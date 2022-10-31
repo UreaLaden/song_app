@@ -18,11 +18,19 @@ well as create playlists and show the videos.
 
 <hr>
 
-# Week 1: Create a Windows forms application with basic controls
+# Week 1: Create a Windows form application with basic controls
 
 <p align='center'>
-    <img src=public/img/mainForm.png></img>
+    <img src=public/img/mainForm.png />
 </p>
+
+# Week 2: Validating form input and Looping through Songs
+
+<p align='center'>
+    <img src=public/img/mainForm_2.png />
+</p>
+
+<hr>
 
 **Contributors**
 <table align="center">
