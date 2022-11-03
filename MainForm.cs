@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using Mckinney_CourseProject_CEIS209.Utilities;
 
 namespace Mckinney_CourseProject_CEIS209
 {
@@ -15,6 +16,12 @@ namespace Mckinney_CourseProject_CEIS209
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Implementing the Windows USER component that creates and
+        /// manipulates the standard elements of the WIndows UI
+        /// </summary>
+        
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -100,6 +107,28 @@ namespace Mckinney_CourseProject_CEIS209
         private void minimizeBtn_Click(object sender, EventArgs e)
         {
             this.WindowState |= FormWindowState.Minimized;
+        }
+
+        private void minimizeBtn_MouseEnter(object sender, EventArgs e)
+        {
+            minimizeBtn.Image = Schemas.Images[Schemas.MINIMIZE_HIGHLIGHTED];
+            
+        }
+
+        private void minimizeBtn_MouseLeave(object sender, EventArgs e)
+        {
+            minimizeBtn.Image = Schemas.Images[Schemas.MINIMIZE];
+            minimizeBtn.Size = new Size(55, 58);
+        }
+
+        private void closeButton_MouseEnter(object sender, EventArgs e)
+        {
+            closeButton.Image = Schemas.Images[Schemas.CLOSE_HIGHLIGHTED];
+        }
+
+        private void closeButton_MouseLeave(object sender, EventArgs e)
+        {
+            closeButton.Image = Schemas.Images[Schemas.CLOSE];
         }
     }
 }

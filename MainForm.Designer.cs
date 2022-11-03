@@ -282,28 +282,34 @@
             // 
             this.minimizeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimizeBtn.FlatAppearance.BorderSize = 0;
+            this.minimizeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.minimizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
             this.minimizeBtn.Image = ((System.Drawing.Image)(resources.GetObject("minimizeBtn.Image")));
-            this.minimizeBtn.Location = new System.Drawing.Point(1336, 8);
+            this.minimizeBtn.Location = new System.Drawing.Point(1336, 1);
             this.minimizeBtn.Name = "minimizeBtn";
-            this.minimizeBtn.Size = new System.Drawing.Size(51, 42);
+            this.minimizeBtn.Size = new System.Drawing.Size(55, 58);
             this.minimizeBtn.TabIndex = 1;
             this.minimizeBtn.UseVisualStyleBackColor = true;
             this.minimizeBtn.Click += new System.EventHandler(this.minimizeBtn_Click);
+            this.minimizeBtn.MouseEnter += new System.EventHandler(this.minimizeBtn_MouseEnter);
+            this.minimizeBtn.MouseLeave += new System.EventHandler(this.minimizeBtn_MouseLeave);
             // 
             // closeButton
             // 
             this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(1418, 8);
+            this.closeButton.Location = new System.Drawing.Point(1414, 1);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(51, 42);
+            this.closeButton.Size = new System.Drawing.Size(55, 58);
             this.closeButton.TabIndex = 0;
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.MouseEnter += new System.EventHandler(this.closeButton_MouseEnter);
+            this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
             // 
             // MainForm
             // 
