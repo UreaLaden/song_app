@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,7 +15,10 @@ namespace Mckinney_CourseProject_CEIS209
         {
             InitializeComponent();
         }
-
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr one, int two, int three,int four);
         private void addButton_Click(object sender, EventArgs e)
         {
             List<TextBox> textBoxList = new List<TextBox> 
@@ -32,7 +36,9 @@ namespace Mckinney_CourseProject_CEIS209
             {
                 var baseWord = filteredStrings[0].Split('T')[0];
                 var field = char.ToUpper(baseWord.First()) + baseWord.Substring(1).ToLower();
-                MessageBox.Show($"The {field} Cannot be blank");
+                
+                DialogResult result = MessageBox.Show($"The {field} Cannot be blank");
+                
                 return;
             }
 
@@ -72,6 +78,28 @@ namespace Mckinney_CourseProject_CEIS209
                 sb.Append(newLine);
             }
             outputText.Text = sb.ToString();
+        }
+
+        private void headerPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
+
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void maximizeBtn_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void minimizeBtn_Click(object sender, EventArgs e)
+        {
+            this.WindowState |= FormWindowState.Minimized;
         }
     }
 }
