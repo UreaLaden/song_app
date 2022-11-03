@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -11,31 +10,9 @@ namespace Mckinney_CourseProject_CEIS209
 {
     public partial class MainForm : Form
     {
-        [DllImport("user32.dll")]
-        static extern int ReleaseDC(IntPtr hWnd, IntPtr hDc);
-
-        [DllImport("User32.dll")]
-        private static extern IntPtr GetWindowDC(IntPtr hWnd);
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            const int WM_NCPAINT = 0x85;
-            if(m.Msg == WM_NCPAINT)
-            {
-                IntPtr hdc = GetWindowDC(m.HWnd);
-                if((int)hdc != 0)
-                {
-                    Graphics g = Graphics.FromHdc(hdc);
-                    g.FillRectangle(Brushes.Red, new Rectangle(0, 0, 4800, 30));
-                    g.Flush();
-                    ReleaseDC(m.HWnd, hdc);
-                }
-            }
         }
 
         private void addButton_Click(object sender, EventArgs e)
