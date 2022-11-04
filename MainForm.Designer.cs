@@ -40,18 +40,17 @@
             this.artistText = new System.Windows.Forms.TextBox();
             this.artistLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
-            this.outputText = new System.Windows.Forms.TextBox();
             this.showSongs = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.outputText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.songList = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.headerPanel = new System.Windows.Forms.Panel();
-            this.minimizeBtn = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.minimizeBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.headerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,23 +161,13 @@
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Oswald", 16F);
             this.addButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.addButton.Location = new System.Drawing.Point(0, 486);
+            this.addButton.Location = new System.Drawing.Point(11, 486);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(526, 195);
+            this.addButton.Size = new System.Drawing.Size(505, 195);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add Song";
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // outputText
-            // 
-            this.outputText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(221)))));
-            this.outputText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.outputText.Location = new System.Drawing.Point(657, 569);
-            this.outputText.Multiline = true;
-            this.outputText.Name = "outputText";
-            this.outputText.Size = new System.Drawing.Size(777, 427);
-            this.outputText.TabIndex = 15;
             // 
             // showSongs
             // 
@@ -187,54 +176,17 @@
             this.showSongs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showSongs.Font = new System.Drawing.Font("Oswald", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showSongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.showSongs.Location = new System.Drawing.Point(1, 734);
+            this.showSongs.Location = new System.Drawing.Point(11, 734);
             this.showSongs.Name = "showSongs";
-            this.showSongs.Size = new System.Drawing.Size(525, 195);
+            this.showSongs.Size = new System.Drawing.Size(505, 195);
             this.showSongs.TabIndex = 6;
             this.showSongs.Text = "Show All Songs";
             this.showSongs.UseVisualStyleBackColor = false;
             this.showSongs.Click += new System.EventHandler(this.showSongs_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Oswald", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
-            this.label1.Location = new System.Drawing.Point(649, 506);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 62);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Details:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Oswald", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
-            this.label2.Location = new System.Drawing.Point(649, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 62);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Song List:";
-            // 
-            // songList
-            // 
-            this.songList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(221)))));
-            this.songList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.songList.FormattingEnabled = true;
-            this.songList.HorizontalScrollbar = true;
-            this.songList.ItemHeight = 37;
-            this.songList.Location = new System.Drawing.Point(657, 122);
-            this.songList.Name = "songList";
-            this.songList.ScrollAlwaysVisible = true;
-            this.songList.Size = new System.Drawing.Size(777, 374);
-            this.songList.TabIndex = 20;
-            // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.panel1.Controls.Add(this.addButton);
             this.panel1.Controls.Add(this.showSongs);
             this.panel1.Controls.Add(this.artistLabel);
@@ -248,38 +200,98 @@
             this.panel1.Controls.Add(this.genreText);
             this.panel1.Controls.Add(this.yearText);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(0, 61);
+            this.panel1.Location = new System.Drawing.Point(0, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(529, 982);
             this.panel1.TabIndex = 21;
             // 
-            // panel2
+            // outputText
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
-            this.panel2.Controls.Add(this.headerPanel);
-            this.panel2.Controls.Add(this.songList);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.outputText);
-            this.panel2.Location = new System.Drawing.Point(1, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1478, 1043);
-            this.panel2.TabIndex = 22;
+            this.outputText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(221)))));
+            this.outputText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.outputText.Location = new System.Drawing.Point(627, 565);
+            this.outputText.Multiline = true;
+            this.outputText.Name = "outputText";
+            this.outputText.Size = new System.Drawing.Size(777, 427);
+            this.outputText.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Oswald", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
+            this.label1.Location = new System.Drawing.Point(619, 502);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 62);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Details:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Oswald", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
+            this.label2.Location = new System.Drawing.Point(619, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(152, 62);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Song List:";
+            // 
+            // songList
+            // 
+            this.songList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(221)))));
+            this.songList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.songList.FormattingEnabled = true;
+            this.songList.HorizontalScrollbar = true;
+            this.songList.ItemHeight = 37;
+            this.songList.Location = new System.Drawing.Point(627, 118);
+            this.songList.Name = "songList";
+            this.songList.ScrollAlwaysVisible = true;
+            this.songList.Size = new System.Drawing.Size(777, 374);
+            this.songList.TabIndex = 20;
             // 
             // headerPanel
             // 
-            this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(221)))));
+            this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.headerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.headerPanel.Controls.Add(this.label3);
+            this.headerPanel.Controls.Add(this.songList);
+            this.headerPanel.Controls.Add(this.label2);
+            this.headerPanel.Controls.Add(this.label1);
+            this.headerPanel.Controls.Add(this.panel1);
+            this.headerPanel.Controls.Add(this.outputText);
             this.headerPanel.Controls.Add(this.minimizeBtn);
             this.headerPanel.Controls.Add(this.closeButton);
-            this.headerPanel.Location = new System.Drawing.Point(-1, 0);
+            this.headerPanel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.headerPanel.Location = new System.Drawing.Point(2, 2);
             this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Size = new System.Drawing.Size(1479, 61);
+            this.headerPanel.Size = new System.Drawing.Size(1474, 1039);
             this.headerPanel.TabIndex = 13;
             this.headerPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.headerPanel_MouseDown);
             // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.Color.Transparent;
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
+            this.closeButton.Location = new System.Drawing.Point(1414, 1);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(55, 63);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.MouseEnter += new System.EventHandler(this.closeButton_MouseEnter);
+            this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
+            // 
             // minimizeBtn
             // 
+            this.minimizeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minimizeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimizeBtn.FlatAppearance.BorderSize = 0;
             this.minimizeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -288,37 +300,29 @@
             this.minimizeBtn.Image = ((System.Drawing.Image)(resources.GetObject("minimizeBtn.Image")));
             this.minimizeBtn.Location = new System.Drawing.Point(1336, 1);
             this.minimizeBtn.Name = "minimizeBtn";
-            this.minimizeBtn.Size = new System.Drawing.Size(55, 58);
+            this.minimizeBtn.Size = new System.Drawing.Size(55, 63);
             this.minimizeBtn.TabIndex = 1;
             this.minimizeBtn.UseVisualStyleBackColor = true;
             this.minimizeBtn.Click += new System.EventHandler(this.minimizeBtn_Click);
             this.minimizeBtn.MouseEnter += new System.EventHandler(this.minimizeBtn_MouseEnter);
             this.minimizeBtn.MouseLeave += new System.EventHandler(this.minimizeBtn_MouseLeave);
             // 
-            // closeButton
+            // label3
             // 
-            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closeButton.FlatAppearance.BorderSize = 0;
-            this.closeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(1414, 1);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(55, 58);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            this.closeButton.MouseEnter += new System.EventHandler(this.closeButton_MouseEnter);
-            this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(234, 37);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Video Manager";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(163)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1477, 1042);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.headerPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -326,9 +330,8 @@
             this.Text = "Video Manager";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.headerPanel.ResumeLayout(false);
+            this.headerPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -346,16 +349,16 @@
         private System.Windows.Forms.TextBox artistText;
         private System.Windows.Forms.Label artistLabel;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.TextBox outputText;
         private System.Windows.Forms.Button showSongs;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox outputText;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox songList;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.Button minimizeBtn;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Label label3;
     }
 }
 
