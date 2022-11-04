@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mckinney_CourseProject_CEIS209.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using Mckinney_CourseProject_CEIS209.Utilities;
 
 namespace Mckinney_CourseProject_CEIS209
 {
@@ -15,17 +15,28 @@ namespace Mckinney_CourseProject_CEIS209
         public MainForm()
         {
             InitializeComponent();
-        }
 
-        /// <summary>
-        /// Implementing the Windows USER component that creates and
-        /// manipulates the standard elements of the WIndows UI
-        /// </summary>
-        
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr one, int two, int three,int four);
+        #region UI Configuration
+            EventUtils eventUtils = new EventUtils();
+            headerPanel.MouseDown += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
+            
+            addButton.MouseEnter += new EventHandler(eventUtils.addButton_MouseEnter);
+            addButton.MouseLeave += new EventHandler(eventUtils.addButton_MouseLeave);
+
+            showSongs.MouseEnter += new EventHandler(eventUtils.showAllButton_MouseEnter);
+            showSongs.MouseLeave += new EventHandler(eventUtils.showAllButton_MouseLeave);
+
+            minimizeBtn.MouseClick += new MouseEventHandler(eventUtils.minimizeBtn_Click);
+            minimizeBtn.MouseEnter += new EventHandler(eventUtils.minimizeBtn_MouseEnter);
+            minimizeBtn.MouseLeave += new EventHandler(eventUtils.minimizeBtn_MouseLeave);
+
+            closeButton.MouseClick += new MouseEventHandler(eventUtils.closeButton_Click);
+            closeButton.MouseEnter += new EventHandler(eventUtils.closeButton_MouseEnter);
+            closeButton.MouseLeave += new EventHandler(eventUtils.closeButton_MouseLeave);
+       
+        #endregion
+
+        }
         private void addButton_Click(object sender, EventArgs e)
         {
             List<TextBox> textBoxList = new List<TextBox> 
@@ -87,48 +98,7 @@ namespace Mckinney_CourseProject_CEIS209
             outputText.Text = sb.ToString();
         }
 
-        private void headerPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(Handle, 0x112, 0xf012, 0);
 
-        }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void maximizeBtn_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-        }
-
-        private void minimizeBtn_Click(object sender, EventArgs e)
-        {
-            this.WindowState |= FormWindowState.Minimized;
-        }
-
-        private void minimizeBtn_MouseEnter(object sender, EventArgs e)
-        {
-            minimizeBtn.Image = Schemas.Images[Schemas.MINIMIZE_HIGHLIGHTED];
-            
-        }
-
-        private void minimizeBtn_MouseLeave(object sender, EventArgs e)
-        {
-            minimizeBtn.Image = Schemas.Images[Schemas.MINIMIZE];
-            minimizeBtn.Size = new Size(55, 58);
-        }
-
-        private void closeButton_MouseEnter(object sender, EventArgs e)
-        {
-            closeButton.Image = Schemas.Images[Schemas.CLOSE_HIGHLIGHTED];
-        }
-
-        private void closeButton_MouseLeave(object sender, EventArgs e)
-        {
-            closeButton.Image = Schemas.Images[Schemas.CLOSE];
-        }
     }
 }
