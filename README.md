@@ -31,9 +31,10 @@ well as create playlists and show the videos.
 </p>
 
 ## <u>Styling Update</u>
-    
-![Post Styling Demo](public\img\post_styling.gif)
-
+   
+<p align='center'>
+    <img src=public/img/post_styling.gif />
+</p>
 <hr>
 
 **Contributors**
