@@ -16,10 +16,12 @@ namespace Mckinney_CourseProject_CEIS209
         {
             InitializeComponent();
 
-        #region UI Configuration
+            #region UI Configuration
+            
             EventUtils eventUtils = new EventUtils();
             headerPanel.MouseDown += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
-            
+            headerLabel.MouseDown += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
+
             addButton.MouseEnter += new EventHandler(eventUtils.addButton_MouseEnter);
             addButton.MouseLeave += new EventHandler(eventUtils.addButton_MouseLeave);
 

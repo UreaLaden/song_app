@@ -58,7 +58,7 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Oswald", 16F);
-            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.titleLabel.Location = new System.Drawing.Point(12, 76);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(79, 54);
@@ -87,7 +87,7 @@
             // 
             this.urlLabel.AutoSize = true;
             this.urlLabel.Font = new System.Drawing.Font("Oswald", 16F);
-            this.urlLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.urlLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.urlLabel.Location = new System.Drawing.Point(12, 325);
             this.urlLabel.Name = "urlLabel";
             this.urlLabel.Size = new System.Drawing.Size(76, 54);
@@ -107,7 +107,7 @@
             // 
             this.yearLabel.AutoSize = true;
             this.yearLabel.Font = new System.Drawing.Font("Oswald", 16F);
-            this.yearLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.yearLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.yearLabel.Location = new System.Drawing.Point(12, 265);
             this.yearLabel.Name = "yearLabel";
             this.yearLabel.Size = new System.Drawing.Size(80, 54);
@@ -127,7 +127,7 @@
             // 
             this.genreLabel.AutoSize = true;
             this.genreLabel.Font = new System.Drawing.Font("Oswald", 16F);
-            this.genreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.genreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.genreLabel.Location = new System.Drawing.Point(12, 202);
             this.genreLabel.Name = "genreLabel";
             this.genreLabel.Size = new System.Drawing.Size(96, 54);
@@ -147,7 +147,7 @@
             // 
             this.artistLabel.AutoSize = true;
             this.artistLabel.Font = new System.Drawing.Font("Oswald", 16F);
-            this.artistLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.artistLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.artistLabel.Location = new System.Drawing.Point(12, 139);
             this.artistLabel.Name = "artistLabel";
             this.artistLabel.Size = new System.Drawing.Size(94, 54);
@@ -190,7 +190,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
             this.panel1.Controls.Add(this.addButton);
             this.panel1.Controls.Add(this.showSongs);
             this.panel1.Controls.Add(this.artistLabel);
@@ -204,7 +204,7 @@
             this.panel1.Controls.Add(this.genreText);
             this.panel1.Controls.Add(this.yearText);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(0, 55);
+            this.panel1.Location = new System.Drawing.Point(32, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(529, 982);
             this.panel1.TabIndex = 21;
@@ -224,7 +224,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Oswald", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.label1.Location = new System.Drawing.Point(619, 502);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 62);
@@ -236,7 +236,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Oswald", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.label2.Location = new System.Drawing.Point(619, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(152, 62);
@@ -269,7 +269,7 @@
             this.headerPanel.Controls.Add(this.closeButton);
             this.headerPanel.Controls.Add(this.headerLabel);
             this.headerPanel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.headerPanel.Location = new System.Drawing.Point(2, 2);
+            this.headerPanel.Location = new System.Drawing.Point(2, 1);
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(1474, 1039);
             this.headerPanel.TabIndex = 13;
@@ -277,8 +277,7 @@
             // headerLabel
             // 
             this.headerLabel.AutoSize = true;
-            this.headerLabel.Enabled = false;
-            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.headerLabel.Location = new System.Drawing.Point(21, 10);
             this.headerLabel.Name = "headerLabel";
             this.headerLabel.Size = new System.Drawing.Size(234, 37);
@@ -319,7 +318,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(163)))), ((int)(((byte)(199)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(1477, 1042);
             this.Controls.Add(this.headerPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
