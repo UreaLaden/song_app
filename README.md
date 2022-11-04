@@ -18,17 +18,21 @@ well as create playlists and show the videos.
 
 <hr>
 
-# Week 1: Create a Windows form application with basic controls
+## <u>Week 1: Create a Windows form application with basic controls</u>
 
 <p align='center'>
     <img src=public/img/mainForm.png />
 </p>
 
-# Week 2: Validating form input and Looping through Songs
+## <u>Week 2: Validating form input and Looping through Songs</u>
 
 <p align='center'>
     <img src=public/img/mainForm_2.png />
 </p>
+
+## <u>Styling Update</u>
+    
+![Post Styling Demo](public\img\post_styling.gif)
 
 <hr>
 

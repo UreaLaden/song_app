@@ -19,7 +19,7 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
            {BLACK,  Color.FromArgb(35,31,32) },
            {RED , Color.FromArgb(187,68,48)},
            {BLUE , Color.FromArgb(131,163,199)},
-           { YELLOW , Color.FromArgb(243,223,162)},
+           { YELLOW , Color.FromArgb(255,117,0)},
            {WHITE, Color.FromArgb(239,230,221)}
         };
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -27,18 +28,44 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             SendMessage(control.Handle, 0x112, 0xf012, 0);
 
         }
-        public void addButton_MouseEnter(object sender, EventArgs e)
+        public void OnMouseEnter(object sender, EventArgs e, Color color,Image image =null)
         {
-            (sender as Button).ForeColor = Schemas.Themes[Schemas.RED];
-        }
-        public void addButton_MouseLeave(object sender, EventArgs e)
-        {
-            (sender as Button).ForeColor = Schemas.Themes[Schemas.BLACK];
+            Button button = (Button)sender;
+            if (color != null)
+            {
+                button.ForeColor = color;
+                button.Font = new Font(button.Font.FontFamily, 32);
+            }
+            if(image != null)
+            {
+                button.Image = image;
+            }
         }
 
-        public void showAllButton_MouseEnter(object sender, EventArgs e)
+        public void OnMouseLeave(object sender, EventArgs e, Color color,Image image=null)
         {
-            (sender as Button).ForeColor = Schemas.Themes[Schemas.RED];
+            Button button = (Button)sender;
+            if(color != null)
+            {
+                button.ForeColor = color;
+                button.Font = new Font(button.Font.FontFamily, 16);
+            }
+            if(image != null)
+            {
+                button.Image = image;
+            }
+        }
+
+        public void OnMouseClick(object sender, EventArgs e, Action callback)
+        {
+            callback();
+        }
+
+        public void addButton_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (sender as Button);
+            button.ForeColor = Schemas.Themes[Schemas.BLACK];
+            button.Font = new System.Drawing.Font(button.Font.FontFamily, 16);
         }
 
         public void showAllButton_MouseLeave(object sender, EventArgs e)

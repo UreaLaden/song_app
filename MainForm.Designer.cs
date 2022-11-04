@@ -47,9 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.songList = new System.Windows.Forms.ListBox();
             this.headerPanel = new System.Windows.Forms.Panel();
-            this.headerLabel = new System.Windows.Forms.Label();
             this.minimizeBtn = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
             this.SuspendLayout();
@@ -159,7 +159,7 @@
             this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
             this.addButton.FlatAppearance.BorderSize = 0;
             this.addButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
+            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(199)))), ((int)(((byte)(0)))));
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Oswald", 16F);
             this.addButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
@@ -169,14 +169,13 @@
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add Song";
             this.addButton.UseVisualStyleBackColor = false;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // showSongs
             // 
             this.showSongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
             this.showSongs.FlatAppearance.BorderSize = 0;
             this.showSongs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.showSongs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(223)))), ((int)(((byte)(162)))));
+            this.showSongs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(177)))), ((int)(((byte)(0)))));
             this.showSongs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showSongs.Font = new System.Drawing.Font("Oswald", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showSongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
@@ -186,7 +185,6 @@
             this.showSongs.TabIndex = 6;
             this.showSongs.Text = "Show All Songs";
             this.showSongs.UseVisualStyleBackColor = false;
-            this.showSongs.Click += new System.EventHandler(this.showSongs_Click);
             // 
             // panel1
             // 
@@ -269,20 +267,10 @@
             this.headerPanel.Controls.Add(this.closeButton);
             this.headerPanel.Controls.Add(this.headerLabel);
             this.headerPanel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.headerPanel.Location = new System.Drawing.Point(2, 1);
+            this.headerPanel.Location = new System.Drawing.Point(2, 2);
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(1474, 1039);
             this.headerPanel.TabIndex = 13;
-            // 
-            // headerLabel
-            // 
-            this.headerLabel.AutoSize = true;
-            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
-            this.headerLabel.Location = new System.Drawing.Point(21, 10);
-            this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(234, 37);
-            this.headerLabel.TabIndex = 22;
-            this.headerLabel.Text = "Video Manager";
             // 
             // minimizeBtn
             // 
@@ -314,11 +302,21 @@
             this.closeButton.TabIndex = 0;
             this.closeButton.UseVisualStyleBackColor = true;
             // 
+            // headerLabel
+            // 
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.headerLabel.Location = new System.Drawing.Point(21, 10);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(234, 37);
+            this.headerLabel.TabIndex = 22;
+            this.headerLabel.Text = "Video Manager";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(68)))), ((int)(((byte)(48)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(177)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1477, 1042);
             this.Controls.Add(this.headerPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

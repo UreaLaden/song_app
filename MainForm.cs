@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -16,30 +15,10 @@ namespace Mckinney_CourseProject_CEIS209
         {
             InitializeComponent();
 
-            #region UI Configuration
-            
-            EventUtils eventUtils = new EventUtils();
-            headerPanel.MouseDown += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
-            headerLabel.MouseDown += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
-
-            addButton.MouseEnter += new EventHandler(eventUtils.addButton_MouseEnter);
-            addButton.MouseLeave += new EventHandler(eventUtils.addButton_MouseLeave);
-
-            showSongs.MouseEnter += new EventHandler(eventUtils.showAllButton_MouseEnter);
-            showSongs.MouseLeave += new EventHandler(eventUtils.showAllButton_MouseLeave);
-
-            minimizeBtn.MouseClick += new MouseEventHandler(eventUtils.minimizeBtn_Click);
-            minimizeBtn.MouseEnter += new EventHandler(eventUtils.minimizeBtn_MouseEnter);
-            minimizeBtn.MouseLeave += new EventHandler(eventUtils.minimizeBtn_MouseLeave);
-
-            closeButton.MouseClick += new MouseEventHandler(eventUtils.closeButton_Click);
-            closeButton.MouseEnter += new EventHandler(eventUtils.closeButton_MouseEnter);
-            closeButton.MouseLeave += new EventHandler(eventUtils.closeButton_MouseLeave);
-       
-        #endregion
+            RegisterEvents();
 
         }
-        private void addButton_Click(object sender, EventArgs e)
+        private void addButton_Click()
         {
             List<TextBox> textBoxList = new List<TextBox> 
             { 
@@ -57,7 +36,7 @@ namespace Mckinney_CourseProject_CEIS209
                 var baseWord = filteredStrings[0].Split('T')[0];
                 var field = char.ToUpper(baseWord.First()) + baseWord.Substring(1).ToLower();
                 
-                DialogResult result = MessageBox.Show($"The {field} Cannot be blank");
+                DialogResult result = MessageBox.Show($"The {field} Cannot be blank"); //TODO: Need a custom message box
                 
                 return;
             }
@@ -84,8 +63,7 @@ namespace Mckinney_CourseProject_CEIS209
                 item.Clear();
             }
         }
-
-        private void showSongs_Click(object sender, EventArgs e)
+        private void showSongs_Click()
         {
             outputText.Clear();
 
@@ -100,7 +78,31 @@ namespace Mckinney_CourseProject_CEIS209
             outputText.Text = sb.ToString();
         }
 
+        /// <summary>
+        /// Subscribes to the UI related events
+        /// </summary>
+        private void RegisterEvents()
+        {
+            EventUtils eventUtils  = new EventUtils();
+            headerPanel.MouseDown  += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
+            headerLabel.MouseDown  += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
 
+            addButton.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.Themes[Schemas.RED]);
+            addButton.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
+            addButton.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, addButton_Click);
+
+            showSongs.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.Themes[Schemas.RED]); ;
+            showSongs.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
+            showSongs.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, showSongs_Click);
+
+            minimizeBtn.MouseClick += new MouseEventHandler(eventUtils.minimizeBtn_Click);
+            minimizeBtn.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.MINIMIZE_HIGHLIGHTED]);
+            minimizeBtn.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e,Color.Empty, Schemas.Images[Schemas.MINIMIZE]);
+
+            closeButton.MouseClick += new MouseEventHandler(eventUtils.closeButton_Click);
+            closeButton.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.CLOSE_HIGHLIGHTED]);
+            closeButton.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e, Color.Empty, Schemas.Images[Schemas.CLOSE]);
+        }
 
     }
 }

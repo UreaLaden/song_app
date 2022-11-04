@@ -1,1 +1,0 @@
-## [Color Pallete -- Coolors.co](https://coolors.co/231f20-bb4430-7ebdc2-f3dfa2-efe6dd)
