@@ -47,9 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.songList = new System.Windows.Forms.ListBox();
             this.headerPanel = new System.Windows.Forms.Panel();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.minimizeBtn = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
-            this.headerLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
             this.SuspendLayout();
@@ -272,6 +272,16 @@
             this.headerPanel.Size = new System.Drawing.Size(1474, 1039);
             this.headerPanel.TabIndex = 13;
             // 
+            // headerLabel
+            // 
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.headerLabel.Location = new System.Drawing.Point(21, 10);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(234, 37);
+            this.headerLabel.TabIndex = 22;
+            this.headerLabel.Text = "Video Manager";
+            // 
             // minimizeBtn
             // 
             this.minimizeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -302,16 +312,6 @@
             this.closeButton.TabIndex = 0;
             this.closeButton.UseVisualStyleBackColor = true;
             // 
-            // headerLabel
-            // 
-            this.headerLabel.AutoSize = true;
-            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
-            this.headerLabel.Location = new System.Drawing.Point(21, 10);
-            this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(234, 37);
-            this.headerLabel.TabIndex = 22;
-            this.headerLabel.Text = "Video Manager";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
@@ -323,6 +323,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Video Manager";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

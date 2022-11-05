@@ -9,3 +9,4 @@ D:\Devry\CEIS209\Mckinney_CourseProject_CEIS209\obj\Debug\Mckinney_CourseProject
 D:\Devry\CEIS209\Mckinney_CourseProject_CEIS209\obj\Debug\Mckinney_CourseProject_CEIS209.exe
 D:\Devry\CEIS209\Mckinney_CourseProject_CEIS209\obj\Debug\Mckinney_CourseProject_CEIS209.pdb
 D:\Devry\CEIS209\Mckinney_CourseProject_CEIS209\obj\Debug\Mckinney_CourseProject_CEIS209.MainForm.resources
+D:\Devry\CEIS209\Mckinney_CourseProject_CEIS209\obj\Debug\Mckinney_CourseProject_CEIS209.NoteBox.resources

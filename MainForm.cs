@@ -18,7 +18,7 @@ namespace Mckinney_CourseProject_CEIS209
             RegisterEvents();
 
         }
-        private void addButton_Click()
+        private void AddButton_Click()
         {
             List<TextBox> textBoxList = new List<TextBox> 
             { 
@@ -35,8 +35,8 @@ namespace Mckinney_CourseProject_CEIS209
             {
                 var baseWord = filteredStrings[0].Split('T')[0];
                 var field = char.ToUpper(baseWord.First()) + baseWord.Substring(1).ToLower();
-                
-                DialogResult result = MessageBox.Show($"The {field} Cannot be blank"); //TODO: Need a custom message box
+
+                NoteBox.Show($"The {field} Cannot be blank");
                 
                 return;
             }
@@ -63,7 +63,7 @@ namespace Mckinney_CourseProject_CEIS209
                 item.Clear();
             }
         }
-        private void showSongs_Click()
+        private void ShowSongs_Click()
         {
             outputText.Clear();
 
@@ -77,10 +77,6 @@ namespace Mckinney_CourseProject_CEIS209
             }
             outputText.Text = sb.ToString();
         }
-
-        /// <summary>
-        /// Subscribes to the UI related events
-        /// </summary>
         private void RegisterEvents()
         {
             EventUtils eventUtils  = new EventUtils();
@@ -89,11 +85,11 @@ namespace Mckinney_CourseProject_CEIS209
 
             addButton.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.Themes[Schemas.RED]);
             addButton.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
-            addButton.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, addButton_Click);
+            addButton.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, AddButton_Click);
 
             showSongs.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.Themes[Schemas.RED]); ;
             showSongs.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
-            showSongs.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, showSongs_Click);
+            showSongs.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, ShowSongs_Click);
 
             minimizeBtn.MouseClick += new MouseEventHandler(eventUtils.minimizeBtn_Click);
             minimizeBtn.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.MINIMIZE_HIGHLIGHTED]);
