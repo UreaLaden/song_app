@@ -12,6 +12,13 @@ namespace Mckinney_CourseProject_CEIS209
 {
     public partial class MainForm : Form
     {
+        string[] titleArr   = new string[5];
+        string[] artistArr  = new string[5];
+        string[] genreArr   = new string[5];
+        string[] urlArr     = new string[5];
+        int[]    yearArr    = new int[5];
+        int      maxSongs   = 5;
+        int      songCount  = 0;
         public MainForm()
         {
             InitializeComponent();
@@ -29,18 +36,9 @@ namespace Mckinney_CourseProject_CEIS209
                 yearText,
                 urlText
             };
-            var filteredStrings = textBoxList.Where(x => string.IsNullOrEmpty(x.Text)).Select(x => x.Name).ToList();
-            bool containsEmptyStrings = filteredStrings.Count > 0;
-
-            if (containsEmptyStrings)
-            {
-                var baseWord = filteredStrings[0].Split('T')[0];
-                var field = char.ToUpper(baseWord.First()) + baseWord.Substring(1).ToLower();
-
-                NoteBox.Show($"The {field} Cannot be blank");
-                
-                return;
-            }
+           
+            bool isValidInput = GenericUtils.ValidateInput(textBoxList);
+            if (!isValidInput) return;
 
             StringBuilder sb = new StringBuilder(outputText.Text);
             string newLine = "\r\n";
@@ -49,12 +47,30 @@ namespace Mckinney_CourseProject_CEIS209
             {
                 sb.Append(item.Text);
                 sb.Append(newLine);
-
-                if (item.Name == "titleText")
+                
+                if(songCount >= maxSongs)
                 {
-                    songList.Items.Add(item.Text);
+                    NoteBox.Show($"You have reached\n your {maxSongs} song limit");
+                    return;
+                }
+                switch (item.Name)
+                {
+                    case "titleText":
+                        songList.Items.Add(item.Text);
+                        titleArr[songCount] = item.Text;
+                        break;
+                    case "artistText":
+                        artistArr[songCount] = item.Text;
+                        break;
+                    case "genreText":
+                        genreArr[songCount] = item.Text;
+                        break;
+                    case "urlText":
+                        urlArr[songCount] = item.Text;
+                        break;
                 }
             }
+            songCount++;
             sb.Append(newLine);
 
             outputText.Text = sb.ToString();

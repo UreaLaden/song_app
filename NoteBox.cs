@@ -26,7 +26,7 @@ namespace Mckinney_CourseProject_CEIS209
         {
             noteBox = new NoteBox();
             noteBox.noteBoxText.Text = messageText;
-            //noteBox.pictureBoxImg.Size = new Size(128,128);
+            noteBox.noteBoxText.TextAlign = ContentAlignment.MiddleCenter;
             noteBox.ShowDialog();
             return buttonId;
         }

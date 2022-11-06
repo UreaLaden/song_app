@@ -37,6 +37,8 @@ well as create playlists and show the videos.
 </p>
 <hr>
 
+## <u>Week 3: Adding more event handlers and utility methods</u>
+
 **Contributors**
 <table align="center">
     <tr>
