@@ -28,13 +28,13 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             SendMessage(control.Handle, 0x112, 0xf012, 0);
 
         }
-        public void OnMouseEnter(object sender, EventArgs e, Color color,Image image =null)
+        public void OnMouseEnter(object sender, EventArgs e, Color color,Image image =null,bool isUtilityButton = false)
         {
             Button button = (Button)sender;
             if (color != null)
             {
-                button.ForeColor = color;
-                button.Font = new Font(button.Font.FontFamily, 32);
+                button.BackColor = color;
+                button.Font = new Font(button.Font.FontFamily, isUtilityButton ? 10 : 32);
             }
             if(image != null)
             {
@@ -42,17 +42,19 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             }
         }
 
-        public void OnMouseLeave(object sender, EventArgs e, Color color,Image image=null)
+        public void OnMouseLeave(object sender, EventArgs e, Color color,Image image=null,bool isUtilityButton = false)
         {
             Button button = (Button)sender;
-            if(color != null)
+            if(color != Color.Empty)
             {
                 button.ForeColor = color;
-                button.Font = new Font(button.Font.FontFamily, 16);
+                button.BackColor = Schemas.Themes[Schemas.BLUE];
+                button.Font = new Font(button.Font.FontFamily, isUtilityButton ? 8 : 16);
             }
             if(image != null)
             {
                 button.Image = image;
+                button.BackColor = Schemas.Themes[Schemas.BLACK];
             }
         }
 

@@ -35,23 +35,30 @@
             this.urlLabel = new System.Windows.Forms.Label();
             this.yearText = new System.Windows.Forms.TextBox();
             this.yearLabel = new System.Windows.Forms.Label();
-            this.genreText = new System.Windows.Forms.TextBox();
             this.genreLabel = new System.Windows.Forms.Label();
             this.artistText = new System.Windows.Forms.TextBox();
             this.artistLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.showSongs = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.loadSongsBtn = new System.Windows.Forms.Button();
+            this.storeSongsBtn = new System.Windows.Forms.Button();
+            this.genreText = new System.Windows.Forms.ComboBox();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.findButton = new System.Windows.Forms.Button();
             this.outputText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.songList = new System.Windows.Forms.ListBox();
             this.headerPanel = new System.Windows.Forms.Panel();
-            this.headerLabel = new System.Windows.Forms.Label();
+            this.playButton = new System.Windows.Forms.Button();
+            this.webViewDisplay = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.minimizeBtn = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webViewDisplay)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -114,15 +121,6 @@
             this.yearLabel.TabIndex = 8;
             this.yearLabel.Text = "Year:";
             // 
-            // genreText
-            // 
-            this.genreText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(221)))));
-            this.genreText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.genreText.Location = new System.Drawing.Point(124, 210);
-            this.genreText.Name = "genreText";
-            this.genreText.Size = new System.Drawing.Size(376, 44);
-            this.genreText.TabIndex = 2;
-            // 
             // genreLabel
             // 
             this.genreLabel.AutoSize = true;
@@ -159,13 +157,12 @@
             this.addButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
             this.addButton.FlatAppearance.BorderSize = 0;
             this.addButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(199)))), ((int)(((byte)(0)))));
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Oswald", 16F);
             this.addButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.addButton.Location = new System.Drawing.Point(11, 486);
+            this.addButton.Location = new System.Drawing.Point(11, 464);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(505, 195);
+            this.addButton.Size = new System.Drawing.Size(505, 105);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add Song";
             this.addButton.UseVisualStyleBackColor = false;
@@ -175,13 +172,12 @@
             this.showSongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
             this.showSongs.FlatAppearance.BorderSize = 0;
             this.showSongs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.showSongs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(177)))), ((int)(((byte)(0)))));
             this.showSongs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showSongs.Font = new System.Drawing.Font("Oswald", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showSongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
-            this.showSongs.Location = new System.Drawing.Point(11, 734);
+            this.showSongs.Location = new System.Drawing.Point(11, 832);
             this.showSongs.Name = "showSongs";
-            this.showSongs.Size = new System.Drawing.Size(505, 195);
+            this.showSongs.Size = new System.Drawing.Size(505, 105);
             this.showSongs.TabIndex = 6;
             this.showSongs.Text = "Show All Songs";
             this.showSongs.UseVisualStyleBackColor = false;
@@ -189,6 +185,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.panel1.Controls.Add(this.loadSongsBtn);
+            this.panel1.Controls.Add(this.storeSongsBtn);
+            this.panel1.Controls.Add(this.genreText);
+            this.panel1.Controls.Add(this.clearButton);
+            this.panel1.Controls.Add(this.findButton);
             this.panel1.Controls.Add(this.addButton);
             this.panel1.Controls.Add(this.showSongs);
             this.panel1.Controls.Add(this.artistLabel);
@@ -199,13 +200,92 @@
             this.panel1.Controls.Add(this.urlText);
             this.panel1.Controls.Add(this.artistText);
             this.panel1.Controls.Add(this.titleText);
-            this.panel1.Controls.Add(this.genreText);
             this.panel1.Controls.Add(this.yearText);
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(32, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(529, 982);
             this.panel1.TabIndex = 21;
+            // 
+            // loadSongsBtn
+            // 
+            this.loadSongsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.loadSongsBtn.FlatAppearance.BorderSize = 0;
+            this.loadSongsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.loadSongsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadSongsBtn.Font = new System.Drawing.Font("Oswald", 8F);
+            this.loadSongsBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.loadSongsBtn.Location = new System.Drawing.Point(271, 406);
+            this.loadSongsBtn.Name = "loadSongsBtn";
+            this.loadSongsBtn.Size = new System.Drawing.Size(245, 41);
+            this.loadSongsBtn.TabIndex = 16;
+            this.loadSongsBtn.Text = "Load Song List";
+            this.loadSongsBtn.UseVisualStyleBackColor = false;
+            this.loadSongsBtn.Click += new System.EventHandler(this.loadSongsBtn_Click);
+            // 
+            // storeSongsBtn
+            // 
+            this.storeSongsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.storeSongsBtn.Enabled = false;
+            this.storeSongsBtn.FlatAppearance.BorderSize = 0;
+            this.storeSongsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.storeSongsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.storeSongsBtn.Font = new System.Drawing.Font("Oswald", 8F);
+            this.storeSongsBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.storeSongsBtn.Location = new System.Drawing.Point(11, 406);
+            this.storeSongsBtn.Name = "storeSongsBtn";
+            this.storeSongsBtn.Size = new System.Drawing.Size(245, 41);
+            this.storeSongsBtn.TabIndex = 15;
+            this.storeSongsBtn.Text = "Store Songs";
+            this.storeSongsBtn.UseVisualStyleBackColor = false;
+            // 
+            // genreText
+            // 
+            this.genreText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(230)))), ((int)(((byte)(221)))));
+            this.genreText.FormattingEnabled = true;
+            this.genreText.Items.AddRange(new object[] {
+            "Pop",
+            "Dubstep",
+            "Chillstep",
+            "R & B",
+            "Hip Hop",
+            "Rap",
+            "Country",
+            "Rock"});
+            this.genreText.Location = new System.Drawing.Point(124, 212);
+            this.genreText.Name = "genreText";
+            this.genreText.Size = new System.Drawing.Size(376, 45);
+            this.genreText.TabIndex = 2;
+            // 
+            // clearButton
+            // 
+            this.clearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.clearButton.FlatAppearance.BorderSize = 0;
+            this.clearButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearButton.Font = new System.Drawing.Font("Oswald", 16F);
+            this.clearButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.clearButton.Location = new System.Drawing.Point(11, 709);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(505, 105);
+            this.clearButton.TabIndex = 14;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = false;
+            // 
+            // findButton
+            // 
+            this.findButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.findButton.FlatAppearance.BorderSize = 0;
+            this.findButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.findButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.findButton.Font = new System.Drawing.Font("Oswald", 16F);
+            this.findButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.findButton.Location = new System.Drawing.Point(11, 587);
+            this.findButton.Name = "findButton";
+            this.findButton.Size = new System.Drawing.Size(505, 105);
+            this.findButton.TabIndex = 13;
+            this.findButton.Text = "Find Song";
+            this.findButton.UseVisualStyleBackColor = false;
             // 
             // outputText
             // 
@@ -214,6 +294,7 @@
             this.outputText.Location = new System.Drawing.Point(627, 565);
             this.outputText.Multiline = true;
             this.outputText.Name = "outputText";
+            this.outputText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.outputText.Size = new System.Drawing.Size(777, 427);
             this.outputText.TabIndex = 15;
             // 
@@ -253,11 +334,14 @@
             this.songList.ScrollAlwaysVisible = true;
             this.songList.Size = new System.Drawing.Size(777, 374);
             this.songList.TabIndex = 20;
+            this.songList.SelectedIndexChanged += new System.EventHandler(this.SongList_SelectedIndexChanged);
             // 
             // headerPanel
             // 
             this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
             this.headerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.headerPanel.Controls.Add(this.playButton);
+            this.headerPanel.Controls.Add(this.webViewDisplay);
             this.headerPanel.Controls.Add(this.songList);
             this.headerPanel.Controls.Add(this.label2);
             this.headerPanel.Controls.Add(this.label1);
@@ -267,20 +351,38 @@
             this.headerPanel.Controls.Add(this.closeButton);
             this.headerPanel.Controls.Add(this.headerLabel);
             this.headerPanel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.headerPanel.Location = new System.Drawing.Point(2, 2);
+            this.headerPanel.Location = new System.Drawing.Point(3, 3);
             this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Size = new System.Drawing.Size(1474, 1039);
+            this.headerPanel.Size = new System.Drawing.Size(2140, 1039);
             this.headerPanel.TabIndex = 13;
             // 
-            // headerLabel
+            // playButton
             // 
-            this.headerLabel.AutoSize = true;
-            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
-            this.headerLabel.Location = new System.Drawing.Point(21, 10);
-            this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(234, 37);
-            this.headerLabel.TabIndex = 22;
-            this.headerLabel.Text = "Video Manager";
+            this.playButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.playButton.FlatAppearance.BorderSize = 0;
+            this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(252)))), ((int)(((byte)(0)))));
+            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playButton.Font = new System.Drawing.Font("Oswald", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
+            this.playButton.Location = new System.Drawing.Point(1525, 811);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(505, 105);
+            this.playButton.TabIndex = 15;
+            this.playButton.Text = "Play";
+            this.playButton.UseVisualStyleBackColor = false;
+            // 
+            // webViewDisplay
+            // 
+            this.webViewDisplay.AllowExternalDrop = true;
+            this.webViewDisplay.CreationProperties = null;
+            this.webViewDisplay.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webViewDisplay.Location = new System.Drawing.Point(1460, 288);
+            this.webViewDisplay.Name = "webViewDisplay";
+            this.webViewDisplay.Size = new System.Drawing.Size(632, 452);
+            this.webViewDisplay.Source = new System.Uri("https://www.microsoft.com", System.UriKind.Absolute);
+            this.webViewDisplay.TabIndex = 23;
+            this.webViewDisplay.ZoomFactor = 1D;
             // 
             // minimizeBtn
             // 
@@ -291,7 +393,7 @@
             this.minimizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
             this.minimizeBtn.Image = ((System.Drawing.Image)(resources.GetObject("minimizeBtn.Image")));
-            this.minimizeBtn.Location = new System.Drawing.Point(1336, 1);
+            this.minimizeBtn.Location = new System.Drawing.Point(2002, 1);
             this.minimizeBtn.Name = "minimizeBtn";
             this.minimizeBtn.Size = new System.Drawing.Size(55, 63);
             this.minimizeBtn.TabIndex = 1;
@@ -306,18 +408,28 @@
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.ForeColor = System.Drawing.Color.Transparent;
             this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(1414, 1);
+            this.closeButton.Location = new System.Drawing.Point(2080, 1);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(55, 63);
             this.closeButton.TabIndex = 0;
             this.closeButton.UseVisualStyleBackColor = true;
+            // 
+            // headerLabel
+            // 
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
+            this.headerLabel.Location = new System.Drawing.Point(21, 10);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(234, 37);
+            this.headerLabel.TabIndex = 22;
+            this.headerLabel.Text = "Video Manager";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(177)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(1477, 1042);
+            this.ClientSize = new System.Drawing.Size(2146, 1045);
             this.Controls.Add(this.headerPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -329,6 +441,7 @@
             this.panel1.PerformLayout();
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webViewDisplay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -341,7 +454,6 @@
         private System.Windows.Forms.Label urlLabel;
         private System.Windows.Forms.TextBox yearText;
         private System.Windows.Forms.Label yearLabel;
-        private System.Windows.Forms.TextBox genreText;
         private System.Windows.Forms.Label genreLabel;
         private System.Windows.Forms.TextBox artistText;
         private System.Windows.Forms.Label artistLabel;
@@ -356,6 +468,13 @@
         private System.Windows.Forms.Button minimizeBtn;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label headerLabel;
+        private System.Windows.Forms.Button findButton;
+        private System.Windows.Forms.Button clearButton;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webViewDisplay;
+        private System.Windows.Forms.Button playButton;
+        private System.Windows.Forms.ComboBox genreText;
+        private System.Windows.Forms.Button loadSongsBtn;
+        private System.Windows.Forms.Button storeSongsBtn;
     }
 }
 
