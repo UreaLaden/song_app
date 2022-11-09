@@ -149,10 +149,9 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             }
         }
 
-        public static Song GenerateSongDetails( string songTitle, Song[] songList)
+        public static Song GenerateSongDetails( string songTitle, List<Song> songList)
         {
             var song = songList
-                        .ToList()
                         .FirstOrDefault(x => x != null && x.title == songTitle);
             return song;
         }
@@ -161,48 +160,103 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
         {
             List<Song> songs = new List<Song>();
             var pathToFile = Path.Combine(Schemas.ROOT, "public", "data\\songs.xlsx");
-            WorkBook workbook = WorkBook.Load(pathToFile);
-            WorkSheet sheet = workbook.WorkSheets.First();
-            var range = sheet.GetNamedRanges();
-            var cols = sheet.Rows;
-            foreach(var item in sheet.Rows)
+            WorkBook workbook;
+            WorkSheet sheet;
+            try
             {
-                var currentRow = int.Parse(item.RangeAddressAsString.Split(':')[0][1].ToString());
-                string title = String.Empty;
-                string artist = String.Empty;
-                string genre = String.Empty;
-                string url = String.Empty;
-                int year = -1;
-                foreach(var cell in item.Columns)
+                workbook = WorkBook.Load(pathToFile);
+                sheet = workbook.WorkSheets.First();
+            }
+            catch (IOException)
+            {
+                NoteBox.Show("Please close\nthe spreadsheet.");
+                return null;
+            }
+
+            var lastRow = sheet.Rows.Last();
+            var startingColumn = sheet.RangeAddressAsString.Split(':')[0].ToString();
+            var lastColumn = lastRow.RangeAddressAsString.Split(':')[1].ToString();
+
+            var startingColChar = (int)Convert.ToChar(startingColumn[0]);
+            var lastColChar = (int)Convert.ToChar(lastColumn[0]);
+            var lastRowNum = int.Parse(String.Concat(lastColumn.Where(x => Char.IsDigit(x))));
+            
+            for (int row = 2; row <= lastRowNum;row++)
+            {
+                Song song = new Song();
+                Queue<string> q = new Queue<string>();
+                q.Enqueue("title");
+                q.Enqueue("artist");
+                q.Enqueue("genre");
+                q.Enqueue("year");
+                q.Enqueue("url");
+                for(int col = startingColChar; col <= lastColChar; col++)
                 {
-                    var currentCol = cell.RangeAddressAsString.Split(':')[0][0].ToString();
-                   if(currentRow > 1)
-                   {
-                        switch (currentCol)
-                        {
-                            case "A":
-                                title = cell.Value.ToString();
-                                break;
-                            case "B":
-                                artist = cell.Value.ToString();
-                                break;
-                            case "C":
-                                genre = cell.Value.ToString();
-                                break;
-                            case "D":
-                                year = int.Parse(cell.Value.ToString());
-                                break;
-                            case "E":
-                                url = cell.Value.ToString();
-                                break;
-                        }
-                    }
+                    var column = Convert.ToChar(col).ToString();
+                    var cell = $"{column}{row}";
+                    var target = q.Dequeue();
+                    song.RetrieveAndUpdateProperty(target, sheet[cell].Value.ToString());
                 }
-                if (currentRow <= 1) continue;
-                var song = new Song(title, artist, genre, year, url);
                 songs.Add(song);
             }
+
             return songs;
+        }
+        public static void StoreSongs(List<Song> songsToStore)
+        {
+            var pathToFile = Schemas.OUTPUT_DIR;
+            
+            WorkBook workbook = WorkBook.Load(pathToFile);
+            WorkSheet sheet = workbook.WorkSheets.First();
+
+            var lastRow = sheet.Rows.Last();
+            var startingColumn = lastRow.RangeAddressAsString.Split(':')[0].ToString();
+            var lastColumn = lastRow.RangeAddressAsString.Split(':')[1].ToString();
+            
+            var startingColChar = (int)Convert.ToChar(startingColumn[0]);
+            var lastColChar = (int)Convert.ToChar(lastColumn[0]);
+            var lastRowNum = int.Parse(String.Concat(lastColumn.Where(x => Char.IsDigit(x))));
+            
+            Queue<Song> songs = new Queue<Song>();
+            foreach (Song song in songsToStore)
+            {
+                songs.Enqueue(song);
+            }
+
+            for (int row = lastRowNum + 1; row <= lastRowNum + songsToStore.Count(); row++)
+            {
+
+                if (songs.Count <= 0 ) continue;
+                var song = songs.Dequeue();
+
+                for (int col = startingColChar; col <= lastColChar; col++)
+                {
+                    var column = Convert.ToChar(col).ToString();
+                    var cell = $"{column}{row}";
+                    switch (column)
+                    {
+                        case "A":
+                            sheet[cell].Value = song.title;
+                            break;
+                        case "B":
+                            sheet[cell].Value = song.artist;
+                            break;
+                        case "C":
+                            sheet[cell].Value = song.genre;
+                            break;
+                        case "D":
+                            sheet[cell].Value = song.year;
+                            break;
+                        case "E":
+                            sheet[cell].Value = song.url;
+                            break;
+                        default:
+                            break;
+                    }
+                    Console.WriteLine(cell);
+                }
+            }
+            workbook.Save();
         }
     }
 

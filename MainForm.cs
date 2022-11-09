@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,48 +13,57 @@ namespace Mckinney_CourseProject_CEIS209
 {
     public partial class MainForm : Form
     {
-        Song[] songs = new Song[5];
+        List<Song> songs = new List<Song>();
         int      maxSongs   = 5;
-        int      songCount  = 0;
         public MainForm()
         {
             Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--autoplay-policy=no-user-gesture-required");
             InitializeComponent();
             genreText.SelectedItem = genreText.Items[1].ToString();
             RegisterEvents();
-
         }
         private void AddButton_Click()
         {
-            List<object> textBoxList = new List<object> 
-            { 
+            List<object> textBoxList = new List<object>
+            {
                 titleText,
                 artistText,
                 genreText,
                 yearText,
                 urlText
-            };  
-           
+            };
+
             bool isValidInput = GenericUtils.ValidateInput(textBoxList);
+            
             if (!isValidInput) return;
 
-            var nullSongs = 0;
-            foreach(var song in songs)
-            {
-                if(song == null)
-                {
-                    nullSongs++;
-                }
-            }
-            songCount = maxSongs - nullSongs;
-            if(songCount == maxSongs)
+            if (songList.Items.Count >= maxSongs)
             {
                 NoteBox.Show($"You have reached\n your {maxSongs} song limit");
                 return;
             }
 
-            StringBuilder sb = new StringBuilder(outputText.Text);
-            string newLine = "\r\n";
+            StringBuilder sb;
+            string newLine;
+            Song song;
+            GenerateSongData(textBoxList, out sb, out newLine, out song);
+            var containsSong = songs.Contains(song);
+            if (!containsSong)
+            {
+                songs.Add(song);
+            }
+
+            sb.Append(newLine);
+            outputText.Text = "";
+            outputText.Text = sb.ToString();
+
+            GenericUtils.ClearTextBoxItems(textBoxList);
+        }
+
+        private void GenerateSongData(List<object> textBoxList, out StringBuilder sb, out string newLine, out Song song)
+        {
+            sb = new StringBuilder(outputText.Text);
+            newLine = "\r\n";
             string title = "";
             string artist = "";
             string genre = "";
@@ -72,8 +82,8 @@ namespace Mckinney_CourseProject_CEIS209
                     sb.Append(currentItem.SelectedItem != null ? currentItem.SelectedItem.ToString() : currentItem.Text);
                 }
                 sb.Append(newLine);
-                
-                if(item.GetType() == typeof(TextBox))
+
+                if (item.GetType() == typeof(TextBox))
                 {
                     var currentItem = item as TextBox;
                     switch (currentItem.Name)
@@ -99,20 +109,11 @@ namespace Mckinney_CourseProject_CEIS209
                     genre = currentItem.SelectedItem != null ? currentItem.SelectedItem.ToString() : currentItem.Text;
                 }
             }
-            for(int i = 0; i < songs.Length; i++)
-            {
-                if (songs[i] == null)
-                {
-                    songs[i] = new Song(title, artist, genre, year, url);
-                }
-            }
-            sb.Append(newLine);
-            outputText.Text = "";
-            outputText.Text = sb.ToString();
 
-            GenericUtils.ClearTextBoxItems(textBoxList);
+            song = new Song(title, artist, genre, year, url);
         }
-        private void ShowSongs_Click()
+
+        private void ShowAllSongs_Click()
         {
             outputText.Clear();
 
@@ -135,6 +136,23 @@ namespace Mckinney_CourseProject_CEIS209
 
         }
 
+        public void StoreSongDataClicked()
+        {
+            var currentSongs = songList.Items;
+            var songs = GenericUtils.LoadSongs();
+            List<Song >songsToStore = new List<Song>();
+            foreach(var song in currentSongs)
+            {
+                var s = song.ToString();
+                var songStored = songs.Where(x => x.title == s).ToList().Count() > 0;
+                if (!songStored)
+                {
+                    songsToStore.Add(GenericUtils.GenerateSongDetails(s, this.songs));
+                }
+            }
+            GenericUtils.StoreSongs(songsToStore);
+        }
+    
         private void FindButton_Click()
         {
             if (GenericUtils.SongInList(songList, titleText.Text))
@@ -183,51 +201,56 @@ namespace Mckinney_CourseProject_CEIS209
                 var title = selectedSongs[i].title;
                 songList.Items.Add(title);
 
-                songs[i] = new Song(title, selectedSongs[i].artist, selectedSongs[i].genre, selectedSongs[i].year, selectedSongs[i].url);
+                songs.Add(new Song(title, selectedSongs[i].artist, selectedSongs[i].genre, selectedSongs[i].year, selectedSongs[i].url));
             }
-            ShowSongs_Click();
+            ShowAllSongs_Click();
         }
       
         /// <summary>
         /// Custom Event Handlers for Specific UI elements
+        /// This is preferred since making changes from 
+        /// design UI Events results in a crash and is a bit tedious
         /// </summary>
         private void RegisterEvents()
         {
-            EventUtils eventUtils  = new EventUtils();
-            headerPanel.MouseDown  += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
-            headerLabel.MouseDown  += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
+            EventUtils eventUtils   = new EventUtils();
+            headerPanel.MouseDown   += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
+            headerLabel.MouseDown   += new MouseEventHandler(eventUtils.headerPanel_MouseDown);
 
-            addButton.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
-            addButton.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
-            addButton.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, AddButton_Click);
+            addButton.MouseEnter    += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
+            addButton.MouseLeave    += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
+            addButton.Click         += (sender, e) => eventUtils.OnMouseClick(sender, e, AddButton_Click);
 
-            showSongs.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
-            showSongs.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
-            showSongs.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, ShowSongs_Click);
+            showSongs.MouseEnter    += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
+            showSongs.MouseLeave    += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
+            showSongs.Click         += (sender, e) => eventUtils.OnMouseClick(sender, e, ShowAllSongs_Click);
 
-            clearButton.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
-            clearButton.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
-            clearButton.Click += (sender, e) => eventUtils.OnMouseClick(sender, e, ClearButton_Click);
-
+            clearButton.MouseEnter  += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
+            clearButton.MouseLeave  += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
+            clearButton.Click       += (sender, e) => eventUtils.OnMouseClick(sender, e, ClearButton_Click);
 
             loadSongsBtn.MouseEnter += (sender,e) => eventUtils.OnMouseEnter(sender,e,Schemas.GetRandomColor(),null,true);
             loadSongsBtn.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK], null, true);
 
-            findButton.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
-            findButton.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
-            findButton.Click += (sender, e) => eventUtils.OnMouseClick(sender, e, FindButton_Click);
+            storeSongsBtn.Click += (sender, e) => eventUtils.OnMouseClick(sender, e, StoreSongDataClicked);
+            storeSongsBtn.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor(), null, true);
+            storeSongsBtn.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK], null, true);
 
-            playButton.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.Themes[Schemas.CHARTREUSE_WEB]);
-            playButton.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
-            playButton.Click += (sender, e) => eventUtils.OnMouseClick(sender, e, PlayButton_Click);
+            findButton.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.GetRandomColor());
+            findButton.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
+            findButton.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, FindButton_Click);
 
-            minimizeBtn.MouseClick += new MouseEventHandler(eventUtils.minimizeBtn_Click);
-            minimizeBtn.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.MINIMIZE_HIGHLIGHTED]);
-            minimizeBtn.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e,Color.Empty, Schemas.Images[Schemas.MINIMIZE]);
+            playButton.MouseEnter   += (sender, e) => eventUtils.OnMouseEnter(sender, e, Schemas.Themes[Schemas.CHARTREUSE_WEB]);
+            playButton.MouseLeave   += (sender, e) => eventUtils.OnMouseLeave(sender, e, Schemas.Themes[Schemas.BLACK]);
+            playButton.Click        += (sender, e) => eventUtils.OnMouseClick(sender, e, PlayButton_Click);
 
-            closeButton.MouseClick += new MouseEventHandler(eventUtils.closeButton_Click);
-            closeButton.MouseEnter += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.CLOSE_HIGHLIGHTED]);
-            closeButton.MouseLeave += (sender, e) => eventUtils.OnMouseLeave(sender, e, Color.Empty, Schemas.Images[Schemas.CLOSE]);
+            minimizeBtn.MouseClick  += new MouseEventHandler(eventUtils.minimizeBtn_Click);
+            minimizeBtn.MouseEnter  += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.MINIMIZE_HIGHLIGHTED]);
+            minimizeBtn.MouseLeave  += (sender, e) => eventUtils.OnMouseLeave(sender, e,Color.Empty, Schemas.Images[Schemas.MINIMIZE]);
+
+            closeButton.MouseClick  += new MouseEventHandler(eventUtils.closeButton_Click);
+            closeButton.MouseEnter  += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.CLOSE_HIGHLIGHTED]);
+            closeButton.MouseLeave  += (sender, e) => eventUtils.OnMouseLeave(sender, e, Color.Empty, Schemas.Images[Schemas.CLOSE]);
         }
 
     }

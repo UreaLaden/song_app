@@ -226,7 +226,6 @@
             // storeSongsBtn
             // 
             this.storeSongsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(189)))), ((int)(((byte)(194)))));
-            this.storeSongsBtn.Enabled = false;
             this.storeSongsBtn.FlatAppearance.BorderSize = 0;
             this.storeSongsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(31)))), ((int)(((byte)(32)))));
             this.storeSongsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

@@ -40,7 +40,7 @@ well as create playlists and show the videos.
 ## <u>Week 3: Adding more event handlers and utility methods</u>
 
 <p align="center">
-    <video src=public/data/week_3.mp4 />
+    <video src=public/data/week_3.mp4></video>
 </p>
 
 **Contributors**

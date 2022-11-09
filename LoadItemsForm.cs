@@ -13,7 +13,7 @@ namespace Mckinney_CourseProject_CEIS209
 {
     public partial class SongLoader : Form
     {
-        private static List<Song> storedSongs = new List<Song>();
+        public static List<Song> storedSongs = new List<Song>();
         public static SongLoader songLoader;
         private static int _maxSongs = 5;
         private static List<Song> selectedSongs = new List<Song>();
@@ -27,6 +27,7 @@ namespace Mckinney_CourseProject_CEIS209
         {
             _maxSongs = maxSongs;
             storedSongs = GenericUtils.LoadSongs();
+            if (storedSongs == null) return;
             songLoader = new SongLoader();
             songLoader.titleText.Text = $"Choose {maxSongs} to load.";
             foreach(var song in storedSongs)

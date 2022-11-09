@@ -17,6 +17,7 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
 
         public static string ROOT = Path.GetFullPath("./").Split(new string[] { "bin" }, StringSplitOptions.None)[0];
         public static string IMG_PATH = Path.Combine(ROOT, "public", "styles");
+        public static string OUTPUT_DIR = Path.Combine(Schemas.ROOT, "public", "data\\songs.xlsx");
          
         public static Dictionary<string, Color> Themes = new Dictionary<string, Color>()
         {
