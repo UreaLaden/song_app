@@ -13,13 +13,15 @@ namespace Mckinney_CourseProject_CEIS209
 {
     public partial class MainForm : Form
     {
-        List<Song> songs = new List<Song>();
+        List<Song> songs    = new List<Song>();
         int      maxSongs   = 5;
         public MainForm()
         {
-            //Autoplay on load
+            //Autoplay on loading WebView
             Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--autoplay-policy=no-user-gesture-required");
+            
             InitializeComponent();
+
             genreText.SelectedItem = genreText.Items[1].ToString();
             RegisterEvents();
         }
@@ -61,6 +63,13 @@ namespace Mckinney_CourseProject_CEIS209
             GenericUtils.ClearTextBoxItems(textBoxList);
         }
 
+        /// <summary>
+        /// Generates a song object and populates song ListBox
+        /// </summary>
+        /// <param name="textBoxList"></param>
+        /// <param name="sb"></param>
+        /// <param name="newLine"></param>
+        /// <param name="song"></param>
         private void GenerateSongData(List<object> textBoxList, out StringBuilder sb, out string newLine, out Song song)
         {
             sb = new StringBuilder(outputText.Text);
@@ -194,7 +203,6 @@ namespace Mckinney_CourseProject_CEIS209
         }
         private void loadSongsBtn_Click(object sender, EventArgs e)
         {
-            //Display Dialog option for songs to load
             SongLoader.ShowItemLoader(maxSongs);
             var selectedSongs = SongLoader.GetSelectedSongs();
             for(int i=0;i< selectedSongs.Count;i++)
@@ -258,6 +266,5 @@ namespace Mckinney_CourseProject_CEIS209
             closeButton.MouseEnter  += (sender, e) => eventUtils.OnMouseEnter(sender, e,Color.Empty, Schemas.Images[Schemas.CLOSE_HIGHLIGHTED]);
             closeButton.MouseLeave  += (sender, e) => eventUtils.OnMouseLeave(sender, e, Color.Empty, Schemas.Images[Schemas.CLOSE]);
         }
-
     }
 }

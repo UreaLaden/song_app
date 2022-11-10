@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Mckinney_CourseProject_CEIS209.Utilities
 {
@@ -21,6 +18,12 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
         public extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         public extern static void SendMessage(System.IntPtr one, int two, int three, int four);
+
+        /// <summary>
+        /// Lets us drag the dialog box around by holding down the moust button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void headerPanel_MouseDown(object sender, MouseEventArgs e)
         {
             var control = (sender as Control).TopLevelControl;
@@ -28,6 +31,14 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             SendMessage(control.Handle, 0x112, 0xf012, 0);
 
         }
+        /// <summary>
+        /// For normal buttons change color on mouse over. For others replaces the button image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="color"></param>
+        /// <param name="image"></param>
+        /// <param name="isUtilityButton"></param>
         public void OnMouseEnter(object sender, EventArgs e, Color color,Image image =null,bool isUtilityButton = false)
         {
             Button button = (Button)sender;
@@ -42,6 +53,14 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             }
         }
 
+        /// <summary>
+        /// For normal buttons change color on mouseover. For all others replace the button image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="color"></param>
+        /// <param name="image"></param>
+        /// <param name="isUtilityButton"></param>
         public void OnMouseLeave(object sender, EventArgs e, Color color,Image image=null,bool isUtilityButton = false)
         {
             Button button = (Button)sender;
@@ -58,50 +77,37 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             }
         }
 
+        /// <summary>
+        /// Execute callback function on click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="callback"></param>
         public void OnMouseClick(object sender, EventArgs e, Action callback)
         {
             callback();
         }
 
-        public void addButton_MouseLeave(object sender, EventArgs e)
-        {
-            Button button = (sender as Button);
-            button.ForeColor = Schemas.Themes[Schemas.BLACK];
-            button.Font = new System.Drawing.Font(button.Font.FontFamily, 16);
-        }
-
-        public void showAllButton_MouseLeave(object sender, EventArgs e)
-        {
-            (sender as Button).ForeColor = Schemas.Themes[Schemas.BLACK];
-        }
-
-
+        /// <summary>
+        /// Close the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void closeButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        /// <summary>
+        /// Minimize the dialog window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void minimizeBtn_Click(object sender, EventArgs e)
         {
             Form form = (sender as Control).FindForm();
             form.WindowState = FormWindowState.Minimized;
         }
-        public void minimizeBtn_MouseEnter(object sender, EventArgs e)
-        {
-            (sender as Button).Image = Schemas.Images[Schemas.MINIMIZE_HIGHLIGHTED];
-
-        }
-        public void minimizeBtn_MouseLeave(object sender, EventArgs e)
-        {
-            (sender as Button).Image = Schemas.Images[Schemas.MINIMIZE];
-        }
-        public void closeButton_MouseEnter(object sender, EventArgs e)
-        {
-            (sender as Button).Image = Schemas.Images[Schemas.CLOSE_HIGHLIGHTED];
-        }
-        public void closeButton_MouseLeave(object sender, EventArgs e)
-        {
-            (sender as Button).Image = Schemas.Images[Schemas.CLOSE];
-        }
-
+     
     }
 }

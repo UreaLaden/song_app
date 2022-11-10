@@ -23,6 +23,11 @@ namespace Mckinney_CourseProject_CEIS209
         }
 
         public static List<Song> GetSelectedSongs() => selectedSongs;
+
+        /// <summary>
+        /// Renders dialog box displaying songs available for loading
+        /// </summary>
+        /// <param name="maxSongs">Maximum songs allowed to load</param>
         public static void ShowItemLoader(int maxSongs = 5)
         {
             _maxSongs = maxSongs;

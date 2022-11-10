@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.titleLabel = new System.Windows.Forms.Label();
             this.titleText = new System.Windows.Forms.TextBox();
@@ -56,6 +57,7 @@
             this.minimizeBtn = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.headerLabel = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webViewDisplay)).BeginInit();
@@ -165,6 +167,7 @@
             this.addButton.Size = new System.Drawing.Size(505, 105);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add Song";
+            this.toolTip1.SetToolTip(this.addButton, "Add a new song");
             this.addButton.UseVisualStyleBackColor = false;
             // 
             // showSongs
@@ -474,6 +477,7 @@
         private System.Windows.Forms.ComboBox genreText;
         private System.Windows.Forms.Button loadSongsBtn;
         private System.Windows.Forms.Button storeSongsBtn;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
