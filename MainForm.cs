@@ -17,6 +17,7 @@ namespace Mckinney_CourseProject_CEIS209
         int      maxSongs   = 5;
         public MainForm()
         {
+            //Autoplay on load
             Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--autoplay-policy=no-user-gesture-required");
             InitializeComponent();
             genreText.SelectedItem = genreText.Items[1].ToString();
@@ -198,6 +199,11 @@ namespace Mckinney_CourseProject_CEIS209
             var selectedSongs = SongLoader.GetSelectedSongs();
             for(int i=0;i< selectedSongs.Count;i++)
             {
+                if (songList.Items.Count >= maxSongs)
+                {
+                    NoteBox.Show($"You have reached\n your {maxSongs} song limit");
+                    break;
+                }
                 var title = selectedSongs[i].title;
                 songList.Items.Add(title);
 

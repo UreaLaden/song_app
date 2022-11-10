@@ -15,7 +15,7 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
         /// Checks textBox input fields to determine if any are non empty. 
         /// Displays Message box if an empty input field is found
         /// </summary>
-        /// <param name="textBoxList"></param>
+        /// <param name="textBoxList">List of objects [Textbox,ComboBox]</param>
         /// <returns>False if any fiels are empty.</returns>
         public static bool ValidateInput(List<object> textBoxList)
         {
@@ -29,6 +29,7 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
                     }
                     else
                     {
+                        //Genre is only field stored as ComboBox 
                         var item = x as ComboBox;
                         return string.IsNullOrEmpty(item.SelectedItem != null ? item.SelectedItem.ToString() : item.Text);
                     }
@@ -76,7 +77,6 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
                 }).ToList();
             try
             {
-
                 bool yearInValidFormat = int.Parse(year[0]).GetType() == typeof(int);
             }
             catch (FormatException)
@@ -99,6 +99,13 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             return songList.Items.IndexOf(songTitle);
         }
 
+        /// <summary>
+        /// Checks whether songList contains a song with the specified title.
+        /// (Case sensitive)
+        /// </summary>
+        /// <param name="songList"></param>
+        /// <param name="songTitle"></param>
+        /// <returns></returns>
         public static bool SongInList(ListBox songList,string songTitle)
         {
             return songList.Items.Contains(songTitle);
@@ -132,6 +139,11 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             sb.Append(newLine);
             outputText.Text = sb.ToString();
         }
+
+        /// <summary>
+        /// Clears all text box items
+        /// </summary>
+        /// <param name="textBoxList"></param>
         public static void ClearTextBoxItems(List<object> textBoxList)
         {
             foreach (var item in textBoxList)
@@ -149,6 +161,12 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             }
         }
 
+        /// <summary>
+        /// Retrieves a song object 
+        /// </summary>
+        /// <param name="songTitle">Song title to find</param>
+        /// <param name="songList">List of songs</param>
+        /// <returns>Song object with the specified title</returns>
         public static Song GenerateSongDetails( string songTitle, List<Song> songList)
         {
             var song = songList
@@ -156,15 +174,20 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             return song;
         }
 
+        /// <summary>
+        /// Queries Excel sheet with song data and converts to a list of Song Objects
+        /// </summary>
+        /// <returns>List<Song></returns>
         public static List<Song> LoadSongs()
         {
             List<Song> songs = new List<Song>();
-            var pathToFile = Path.Combine(Schemas.ROOT, "public", "data\\songs.xlsx");
             WorkBook workbook;
             WorkSheet sheet;
+
+            //Program will break if user is looking at the spreadsheet and attempts a load
             try
             {
-                workbook = WorkBook.Load(pathToFile);
+                workbook = WorkBook.Load(Schemas.OUTPUT_DIR);
                 sheet = workbook.WorkSheets.First();
             }
             catch (IOException)
@@ -202,11 +225,14 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
 
             return songs;
         }
+
+        /// <summary>
+        /// Stores a list of songs to excel spreadsheet
+        /// </summary>
+        /// <param name="songsToStore">List of unique songs not currently stored</param>
         public static void StoreSongs(List<Song> songsToStore)
         {
-            var pathToFile = Schemas.OUTPUT_DIR;
-            
-            WorkBook workbook = WorkBook.Load(pathToFile);
+            WorkBook workbook = WorkBook.Load(Schemas.OUTPUT_DIR);
             WorkSheet sheet = workbook.WorkSheets.First();
 
             var lastRow = sheet.Rows.Last();
@@ -217,6 +243,7 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
             var lastColChar = (int)Convert.ToChar(lastColumn[0]);
             var lastRowNum = int.Parse(String.Concat(lastColumn.Where(x => Char.IsDigit(x))));
             
+            //Using a queue here defends against duplicate entries
             Queue<Song> songs = new Queue<Song>();
             foreach (Song song in songsToStore)
             {
@@ -225,7 +252,6 @@ namespace Mckinney_CourseProject_CEIS209.Utilities
 
             for (int row = lastRowNum + 1; row <= lastRowNum + songsToStore.Count(); row++)
             {
-
                 if (songs.Count <= 0 ) continue;
                 var song = songs.Dequeue();
 
