@@ -167,7 +167,7 @@
             this.addButton.Size = new System.Drawing.Size(505, 105);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add Song";
-            this.toolTip1.SetToolTip(this.addButton, "Add a new song");
+            this.toolTip1.SetToolTip(this.addButton, "Generate song data \r\nfrom input values");
             this.addButton.UseVisualStyleBackColor = false;
             // 
             // showSongs
@@ -183,6 +183,7 @@
             this.showSongs.Size = new System.Drawing.Size(505, 105);
             this.showSongs.TabIndex = 6;
             this.showSongs.Text = "Show All Songs";
+            this.toolTip1.SetToolTip(this.showSongs, "Display all available \r\nsong data");
             this.showSongs.UseVisualStyleBackColor = false;
             // 
             // panel1
@@ -223,6 +224,7 @@
             this.loadSongsBtn.Size = new System.Drawing.Size(245, 41);
             this.loadSongsBtn.TabIndex = 16;
             this.loadSongsBtn.Text = "Load Song List";
+            this.toolTip1.SetToolTip(this.loadSongsBtn, "Opens a dialog to select \r\nsongs available for import");
             this.loadSongsBtn.UseVisualStyleBackColor = false;
             this.loadSongsBtn.Click += new System.EventHandler(this.loadSongsBtn_Click);
             // 
@@ -239,6 +241,7 @@
             this.storeSongsBtn.Size = new System.Drawing.Size(245, 41);
             this.storeSongsBtn.TabIndex = 15;
             this.storeSongsBtn.Text = "Store Songs";
+            this.toolTip1.SetToolTip(this.storeSongsBtn, "Stores all song data \r\nfrom the list not on file");
             this.storeSongsBtn.UseVisualStyleBackColor = false;
             // 
             // genreText
@@ -272,6 +275,7 @@
             this.clearButton.Size = new System.Drawing.Size(505, 105);
             this.clearButton.TabIndex = 14;
             this.clearButton.Text = "Clear";
+            this.toolTip1.SetToolTip(this.clearButton, "Clears all input fields \r\nand resets details view");
             this.clearButton.UseVisualStyleBackColor = false;
             // 
             // findButton
@@ -287,6 +291,7 @@
             this.findButton.Size = new System.Drawing.Size(505, 105);
             this.findButton.TabIndex = 13;
             this.findButton.Text = "Find Song";
+            this.toolTip1.SetToolTip(this.findButton, "Locates song data based \r\non the Title field input. \r\n[case sensitive] ");
             this.findButton.UseVisualStyleBackColor = false;
             // 
             // outputText
@@ -372,6 +377,7 @@
             this.playButton.Size = new System.Drawing.Size(505, 105);
             this.playButton.TabIndex = 15;
             this.playButton.Text = "Play";
+            this.toolTip1.SetToolTip(this.playButton, "Navigates to URL of \r\ncurrently selected song");
             this.playButton.UseVisualStyleBackColor = false;
             // 
             // webViewDisplay

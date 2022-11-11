@@ -28,16 +28,19 @@ namespace Mckinney_CourseProject_CEIS209
         /// Renders dialog box displaying songs available for loading
         /// </summary>
         /// <param name="maxSongs">Maximum songs allowed to load</param>
-        public static void ShowItemLoader(int maxSongs = 5)
+        public static void ShowItemLoader(ListBox songList,int maxSongs = 5)
         {
             _maxSongs = maxSongs;
             storedSongs = GenericUtils.LoadSongs();
             if (storedSongs == null) return;
             songLoader = new SongLoader();
-            songLoader.titleText.Text = $"Choose {maxSongs} to load.";
+            songLoader.titleText.Text = $"Select songs for import. ({maxSongs - songList.Items.Count}) Remaining";
             foreach(var song in storedSongs)
             {
-                songLoader.checkedListBox.Items.Add(song.title);
+                if (!songList.Items.Contains(song.title))
+                {
+                    songLoader.checkedListBox.Items.Add(song.title);
+                }
             }
             songLoader.ShowDialog();
 

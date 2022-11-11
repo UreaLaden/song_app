@@ -203,14 +203,14 @@ namespace Mckinney_CourseProject_CEIS209
         }
         private void loadSongsBtn_Click(object sender, EventArgs e)
         {
-            SongLoader.ShowItemLoader(maxSongs);
+            SongLoader.ShowItemLoader(songList,maxSongs);
             var selectedSongs = SongLoader.GetSelectedSongs();
             for(int i=0;i< selectedSongs.Count;i++)
             {
                 if (songList.Items.Count >= maxSongs)
                 {
                     NoteBox.Show($"You have reached\n your {maxSongs} song limit");
-                    break;
+                    return;
                 }
                 var title = selectedSongs[i].title;
                 songList.Items.Add(title);
